@@ -25,6 +25,7 @@ namespace AstanaTestTask.Tasks {
                         InputData();
 
                         Console.WriteLine("Температура, ближайшая к нулю: {0}", _digits.FindTemperature());
+                        _digits.Clear();
                         break;
                     }
                 }
@@ -73,19 +74,20 @@ namespace AstanaTestTask.Tasks {
             var minDifference = int.MaxValue;
 
             foreach (var digit in digits) {
-                var diff = Math.Abs((long) digit - 0);
+                var diff = Math.Abs((long) digit - 0.01);
                 if (minDifference > diff) {
                     minDifference = (int) diff;
                     closest = digit;
                 }
             }
 
-            if (closest < 0)
+            //вариант решения для цифр с точкой
+            /*if (closest < 0)
                 foreach (var digit in digits)
                     if (digit == closest * -1) {
                         closest = digit;
                         break;
-                    }
+                    }*/
 
             return closest;
         }
