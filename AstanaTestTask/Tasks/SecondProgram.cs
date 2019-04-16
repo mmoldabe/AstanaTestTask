@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AstanaTestTask.Tasks {
     public class SecondProgram : IProgram {
@@ -24,7 +25,7 @@ namespace AstanaTestTask.Tasks {
 
                         InputData();
 
-                        Console.WriteLine("Температура, ближайшая к нулю: {0}", _digits.FindTemperature());
+                        Console.WriteLine("Температура, ближайшая к нулю: {0}", _digits.FindTemperatureLinq());
                         _digits.Clear();
                         break;
                     }
@@ -69,13 +70,17 @@ namespace AstanaTestTask.Tasks {
     }
 
     public static partial class Extensions {
+        /// <summary>
+        ///     Как вариант, но итерации столько же
+        /// </summary>
         public static int FindTemperature(this List<int> digits) {
             var closest = int.MaxValue;
             var minDifference = int.MaxValue;
 
+            var number = 0.01;
             foreach (var digit in digits) {
-                var diff = Math.Abs((long) digit - 0.01);
-                if (minDifference > diff) {
+                var diff = Math.Abs(number - digit);
+                if (minDifference >= diff) {
                     minDifference = (int) diff;
                     closest = digit;
                 }
@@ -88,6 +93,17 @@ namespace AstanaTestTask.Tasks {
                         closest = digit;
                         break;
                     }*/
+
+            return closest;
+        }
+
+        /// <summary>
+        ///     Оптимальное решение
+        /// </summary>
+        /// <param name="digits">Array of integers~</param>
+        /// <returns>Temperature closest to 0</returns>
+        public static int FindTemperatureLinq(this List<int> digits) {
+            var closest = digits.OrderBy(digit => Math.Abs(0.01 - digit)).First();
 
             return closest;
         }
