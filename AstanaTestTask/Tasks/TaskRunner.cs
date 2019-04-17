@@ -9,7 +9,7 @@ namespace AstanaTestTask.Tasks {
             for (;;) {
                 var breakLoop = false;
 
-                Console.Write("\nВыберите значение:\n\t1 - Задача №1\n\t2 - задача №2\n\t0 - выход.\nВведите значение: ");
+                Console.Write("\nВыберите значение:\n\t1 - Задача №1\n\t2 - Задача №2\n\t0 - Выход.\nВведите значение: ");
                 var consoleInput = Console.ReadLine();
 
                 if (int.TryParse(consoleInput, out var input)) {
