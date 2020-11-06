@@ -5,7 +5,8 @@ namespace AstanaTestTask.Tasks {
         public void Run() {
             Console.WriteLine("\nЗадача №1:\n");
 
-            for (var i = 1; i <= 100; ++i) Console.WriteLine(i.Mod());
+            for (var i = 1; i <= 100; ++i)
+                Console.WriteLine(i.Mod());
         }
     }
 
