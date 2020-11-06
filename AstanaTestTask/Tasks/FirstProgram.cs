@@ -11,7 +11,7 @@ namespace AstanaTestTask.Tasks {
 
     public static partial class Extensions {
         public static string Mod(this int i) {
-            var result = "";
+            string result;
 
             if (i % 3 == 0 && i % 5 == 0) {
                 result = "AgroStream";
